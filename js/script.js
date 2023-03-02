@@ -18,7 +18,6 @@ function checkPalin(str) {
   }
 }
 
-/**/
 // creo un event listner relativo al button
 buttonTestEl.addEventListener("click", function () {
   // chiedo all'utente una parola e la salvo in una variabile
@@ -30,6 +29,7 @@ buttonTestEl.addEventListener("click", function () {
     userWord === undefined ||
     userWord === null
   ) {
+    inputEl.value = "";
     window.alert("Inserisci una parola per vedere se è palindroma");
   } else {
     if (checkPalin(userWord)) {
@@ -46,4 +46,57 @@ resetButtonEl.addEventListener("click", function () {
   inputEl.value = "";
   alertSuccessEl.style.display = "none";
   alertDangerEl.style.display = "none";
+});
+
+/*Esercizio 2 -------------------------*/
+// L’utente sceglie pari o dispari
+let selectEvenOddEl = document.getElementById("__form-select-input");
+
+// inserisce un numero da 1 a 5.
+let inputNumberEl = document.getElementById("inputNumber");
+console.log(inputNumberEl);
+let giocaButtonEl = document.getElementById("__gioca-button");
+
+console.log(selectEvenOddEl.value, giocaButtonEl);
+
+// Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzione).
+function randomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min) + 1);
+}
+
+// Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione)
+function checkEven(n) {
+  if (n % 2 === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+giocaButtonEl.addEventListener("click", function () {
+  if (
+    isNaN(Number(inputNumberEl.value)) ||
+    inputNumberEl.value === "" ||
+    inputNumberEl.value === undefined ||
+    inputNumberEl.value === null ||
+    Number(inputNumberEl.value) > 5 ||
+    Number(inputNumberEl.value) < 1
+  ) {
+    inputNumberEl.value = "";
+    window.alert("Inserisci un numero tra 1 e 5 nel gioco pari e dispari");
+  } else {
+    let pcRandonNumber = randomNumber(1, 5);
+    console.log("Il numero random del pc è: " + pcRandonNumber);
+    let sum = Number(inputNumberEl.value) + pcRandonNumber;
+    console.log("La somma è: " + sum);
+    // Dichiariamo chi ha vinto.
+    if (
+      (checkEven(sum) && Number(selectEvenOddEl.value) === 1) ||
+      (!checkEven(sum) && Number(selectEvenOddEl.value) === 2)
+    ) {
+      console.log("Hai vinto");
+    } else {
+      console.log("Hai perso");
+    }
+  }
 });
