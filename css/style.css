@@ -8,3 +8,11 @@ body {
   background-color: #1a2748;
   color: white;
 }
+
+.__alert-div {
+  display: none;
+}
+
+.__success-div {
+  display: none;
+}

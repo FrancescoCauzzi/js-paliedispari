@@ -27,9 +27,18 @@
     <section class="__palindroma">
       <div class="container mb-5">
         <h2 class="text-uppercase">Palindroma</h2>
-        <label for="__palindroma-input" class="form-label">Inserisci una parola per iniziare</label>
-        <input class="form-control form-control-lg" id="__palindroma-input" type="text"
+        <label for="__palindroma-input" class="form-label">Inserisci una parola per iniziare premi il bottone sotto per
+          vedere se la parola è palindroma</label>
+        <input class="form-control form-control-lg mb-3" id="__palindroma-input" type="text"
           placeholder="inserisci una parola" aria-label=".form-control-lg example">
+        <button type="button" class="btn btn-primary mb-3" id="__test-button">Testa</button>
+        <button type="button" class="btn btn-danger mb-3" id="__reset-button">Reset</button>
+        <div class="alert alert-success mb-3 __success-div fw-bold" role="alert">
+          A simple success alert—check it out!
+        </div>
+        <div class="alert alert-danger mb-3 __alert-div fw-bold" role="alert">
+          A simple danger alert—check it out!
+        </div>
 
 
       </div>
