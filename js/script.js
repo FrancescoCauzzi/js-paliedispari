@@ -4,7 +4,7 @@ let inputEl = document.getElementById("__palindroma-input");
 let buttonTestEl = document.getElementById("__test-button");
 let alertSuccessEl = document.querySelector(".__success-div");
 let alertDangerEl = document.querySelector(".__alert-div");
-let resetButtonEl = document.getElementById("__reset-button");
+let resetButtonEl = document.getElementById("__reset-button-pali");
 
 // inizializzo una funzione
 // cerco un metodo per invertire una stringa e salvo in una variabile la stringa invertita
@@ -37,7 +37,7 @@ buttonTestEl.addEventListener("click", function () {
       alertSuccessEl.innerHTML = `La parola ${userWord} è palindroma`;
     } else {
       alertDangerEl.style.display = "block";
-      alertDangerEl.innerHTML = `La parola ${userWord} non è palindroma`;
+      alertDangerEl.innerHTML = `La parola "${userWord}" non è palindroma`;
     }
   }
 });
@@ -63,8 +63,18 @@ console.log(selectEvenOddEl.value, giocaButtonEl);
 
 let alertPcRandomNumEl = document.getElementById("alert-pc-random-num");
 let alertSumEl = document.getElementById("alert-sum");
-
 console.log(alertPcRandomNumEl, alertSumEl);
+// gestisco l'output finale
+let haiVintoAlertEl = document.getElementById("hai-vinto-alert");
+let haiPersoAlertEl = document.getElementById("hai-perso-alert");
+
+console.log(haiVintoAlertEl, haiPersoAlertEl);
+
+// gestisco il reset
+
+let resetPariDispEl = document.getElementById("__reset-button-pari-dispari");
+
+console.log(resetPariDispEl);
 
 // funzioni
 
@@ -98,12 +108,12 @@ giocaButtonEl.addEventListener("click", function () {
   } else {
     let pcRandonNumber = randomNumber(1, 5);
     console.log("Il numero random del pc è: " + pcRandonNumber);
-    alertPcRandomNumEl.innerHTML = `Il PC ha generato il numero ${pcRandonNumber}`;
+    alertPcRandomNumEl.innerHTML = `Il PC ha generato il numero: ${pcRandonNumber}`;
     alertPcRandomNumEl.style.display = "block";
 
     let sum = Number(inputNumberEl.value) + pcRandonNumber;
     console.log("La somma è: " + sum);
-    alertSumEl.innerHTML = `La somma dei due numeri è ${sum}`;
+    alertSumEl.innerHTML = `La somma dei due numeri è: ${sum}`;
     alertSumEl.style.display = "block";
 
     // Dichiariamo chi ha vinto.
@@ -112,8 +122,21 @@ giocaButtonEl.addEventListener("click", function () {
       (!checkEven(sum) && Number(selectEvenOddEl.value) === 2)
     ) {
       console.log("Hai vinto");
+      haiVintoAlertEl.innerHTML = "Congratulazioni, hai vinto";
+      haiVintoAlertEl.style.display = "block";
     } else {
       console.log("Hai perso");
+      haiPersoAlertEl.innerHTML = "Spiaze, hai perso";
+      haiPersoAlertEl.style.display = "block";
     }
   }
+});
+
+// gestisco il reset
+resetPariDispEl.addEventListener("click", function () {
+  alertPcRandomNumEl.style.display = "none";
+  alertSumEl.style.display = "none";
+  haiVintoAlertEl.style.display = "none";
+  haiPersoAlertEl.style.display = "none";
+  inputNumberEl.value = "";
 });
