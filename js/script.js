@@ -59,6 +59,15 @@ let giocaButtonEl = document.getElementById("__gioca-button");
 
 console.log(selectEvenOddEl.value, giocaButtonEl);
 
+// gestisco l'output dei risultati
+
+let alertPcRandomNumEl = document.getElementById("alert-pc-random-num");
+let alertSumEl = document.getElementById("alert-sum");
+
+console.log(alertPcRandomNumEl, alertSumEl);
+
+// funzioni
+
 // Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzione).
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min) + 1);
@@ -72,6 +81,8 @@ function checkEven(n) {
     return false;
   }
 }
+
+// up here: funzioni
 
 giocaButtonEl.addEventListener("click", function () {
   if (
@@ -87,8 +98,14 @@ giocaButtonEl.addEventListener("click", function () {
   } else {
     let pcRandonNumber = randomNumber(1, 5);
     console.log("Il numero random del pc è: " + pcRandonNumber);
+    alertPcRandomNumEl.innerHTML = `Il PC ha generato il numero ${pcRandonNumber}`;
+    alertPcRandomNumEl.style.display = "block";
+
     let sum = Number(inputNumberEl.value) + pcRandonNumber;
     console.log("La somma è: " + sum);
+    alertSumEl.innerHTML = `La somma dei due numeri è ${sum}`;
+    alertSumEl.style.display = "block";
+
     // Dichiariamo chi ha vinto.
     if (
       (checkEven(sum) && Number(selectEvenOddEl.value) === 1) ||

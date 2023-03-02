@@ -16,3 +16,11 @@ body {
 .__success-div {
   display: none;
 }
+
+#alert-pc-random-num {
+  display: none;
+}
+
+#alert-sum {
+  display: none;
+}
