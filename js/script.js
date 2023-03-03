@@ -22,6 +22,23 @@ function checkPalin2(str) {
   return str === str.split("").reverse().join("");
 }
 
+function isPalindrome(word) {
+  let isPalindrome = true;
+  let start = 0;
+  let end = word.length - 1;
+
+  let contatore = 0;
+  while (isPalindrome && contatore < word.length / 2) {
+    if (word[start] != word[end]) {
+      isPalindrome = false;
+    }
+    start++;
+    end--;
+    contatore++;
+  }
+  return isPalindrome;
+}
+
 function handleclickPalindroma() {
   // chiedo all'utente una parola e la salvo in una variabile
   let userWord = inputEl.value;
@@ -56,7 +73,7 @@ resetButtonEl.addEventListener("click", function () {
   buttonTestEl.addEventListener("click", handleclickPalindroma);
 });
 
-/*Esercizio 2 -------------------------*/
+/*-----------------------------------------Esercizio 2 ----------------------------------------*/
 // L’utente sceglie pari o dispari
 let selectEvenOddEl = document.getElementById("__form-select-input");
 
