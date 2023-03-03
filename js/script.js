@@ -18,8 +18,11 @@ function checkPalin(str) {
   }
 }
 
-// creo un event listner relativo al button
-buttonTestEl.addEventListener("click", function () {
+function checkPalin2(str) {
+  return str === str.split("").reverse().join("");
+}
+
+function handleclickPalindroma() {
   // chiedo all'utente una parola e la salvo in una variabile
   let userWord = inputEl.value;
   // verificare che l'utente inserisca solo una parola e non un numero o un stringa vuota
@@ -34,18 +37,23 @@ buttonTestEl.addEventListener("click", function () {
   } else {
     if (checkPalin(userWord)) {
       alertSuccessEl.style.display = "block";
-      alertSuccessEl.innerHTML = `La parola ${userWord} è palindroma`;
+      alertSuccessEl.innerHTML = `La parola "${userWord}" è palindroma`;
     } else {
       alertDangerEl.style.display = "block";
       alertDangerEl.innerHTML = `La parola "${userWord}" non è palindroma`;
     }
+    buttonTestEl.removeEventListener("click", handleclickPalindroma);
   }
-});
+}
+
+// creo un event listner relativo al button
+buttonTestEl.addEventListener("click", handleclickPalindroma);
 
 resetButtonEl.addEventListener("click", function () {
   inputEl.value = "";
   alertSuccessEl.style.display = "none";
   alertDangerEl.style.display = "none";
+  buttonTestEl.addEventListener("click", handleclickPalindroma);
 });
 
 /*Esercizio 2 -------------------------*/
@@ -92,9 +100,13 @@ function checkEven(n) {
   }
 }
 
+function checkEven2(n) {
+  return n % 2 === 0;
+}
+
 // up here: funzioni
 
-giocaButtonEl.addEventListener("click", function () {
+function handleclickPariEDispari() {
   if (
     isNaN(Number(inputNumberEl.value)) ||
     inputNumberEl.value === "" ||
@@ -103,8 +115,8 @@ giocaButtonEl.addEventListener("click", function () {
     Number(inputNumberEl.value) > 5 ||
     Number(inputNumberEl.value) < 1
   ) {
+    window.alert("Inserisci un numero tra 1 e 5 nel gioco 'pari e dispari'");
     inputNumberEl.value = "";
-    window.alert("Inserisci un numero tra 1 e 5 nel gioco pari e dispari");
   } else {
     let pcRandonNumber = randomNumber(1, 5);
     console.log("Il numero random del pc è: " + pcRandonNumber);
@@ -122,15 +134,18 @@ giocaButtonEl.addEventListener("click", function () {
       (!checkEven(sum) && Number(selectEvenOddEl.value) === 2)
     ) {
       console.log("Hai vinto");
-      haiVintoAlertEl.innerHTML = "Congratulazioni, hai vinto";
+      haiVintoAlertEl.innerHTML = "Congratulazioni, hai vinto!";
       haiVintoAlertEl.style.display = "block";
     } else {
       console.log("Hai perso");
       haiPersoAlertEl.innerHTML = "Spiaze, hai perso";
       haiPersoAlertEl.style.display = "block";
     }
+    giocaButtonEl.removeEventListener("click", handleclickPariEDispari);
   }
-});
+}
+
+giocaButtonEl.addEventListener("click", handleclickPariEDispari);
 
 // gestisco il reset
 resetPariDispEl.addEventListener("click", function () {
@@ -139,4 +154,5 @@ resetPariDispEl.addEventListener("click", function () {
   haiVintoAlertEl.style.display = "none";
   haiPersoAlertEl.style.display = "none";
   inputNumberEl.value = "";
+  giocaButtonEl.addEventListener("click", handleclickPariEDispari);
 });
